@@ -56,36 +56,42 @@ const Complete = styled(RecipeIngredients)`
 `
   
 
-const RecipeList = ({Recipes}) => {
-    console.log("recipe list",Recipes)
-    const [open, setOpen] = useState(false);
-
-    
-
+const RecipeListItem = ({ recipe }) => {
+    const [open, setOpen] = useState(false)
+  
     return (
-        <>
-            {Recipes.map((recipe)=>(
-                <div  className="diag0"  key={recipe.recipe.url}>
-                    
-                     <Recipe>
-                        <Cover src={recipe.recipe.image} alt="meal" />
-                        <RecipeName>{recipe.recipe.label}</RecipeName>
-                        <RecipeIngredients onClick={()=>setOpen(!open)}>View Ingredients</RecipeIngredients>
-                        <Complete onClick={()=>window.open(recipe.recipe.url)}>View Recipe</Complete>
-                        {open && (
-                            <div >
-                            {recipe.recipe.ingredientLines.map((ingredient)=>(
-                                            
-                                            <p style={{color:"black"}}>{ingredient}</p>
-                                        
-                                    ))}
-                            </div>
-                        )}
-                    </Recipe>
-                </div>
-            ))}
-            </>
+       <div  className="diag0"  key={recipe.recipe.url}>
+  
+                       <Recipe>
+                          <Cover src={recipe.recipe.image} alt="meal" />
+                          <RecipeName>{recipe.recipe.label}</RecipeName>
+                          <RecipeIngredients onClick={()=>setOpen(!open)}>View Ingredients</RecipeIngredients>
+                          <Complete onClick={()=>window.open(recipe.recipe.url)}>View Recipe</Complete>
+  
+  
+                          
+                          {open && (
+                              <div >
+                              {recipe.recipe.ingredientLines.map((ingredient)=>(
+  
+                                              <p style={{color:"black"}}>{ingredient}</p>
+  
+                                      ))}
+                              </div>
+                          )}
+                      </Recipe>
+                  </div> 
     )
-}
-
-export default RecipeList
+  }
+  
+  const RecipeList = ({Recipes}) => {
+      return (
+          <>
+              {Recipes.map((recipe)=>(
+                <RecipeListItem recipe={recipe} />
+              ))}
+              </>
+      )
+  }
+  
+  export default RecipeList
