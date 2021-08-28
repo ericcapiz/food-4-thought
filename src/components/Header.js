@@ -29,6 +29,13 @@ const Search = styled.div `
     padding: 3px;
     border: 1px solid steelblue;
     border-radius: 10px;
+    button{
+        border:none;
+        color:steelblue;
+        background-color: white;
+        font-family: 'Architects Daughter','cursive';
+        font-size: 18px;
+    }
    
 `
 
@@ -42,14 +49,16 @@ const Input = styled.input `
 `
 
 
-const Header = () => {
+const Header = ({Searching,inputEvent,click}) => {
+    
     return (
         <TopBar>
             Food 4 Thought
             <span>Search Ingredients 4 Recipes</span>
             <Search>
-                <img src="/search.svg" alt="search-icon" />
-                <Input type="text" placeholder="YUMMMMMM..." />
+                <img style={{cursor:'pointer'}} onClick={click} src="/search.svg" alt="search-icon" />
+                <Input type="text" placeholder="YUMMMMMM..." value={Searching} onChange={inputEvent}  />
+                <button style={{cursor:'pointer'}} onClick={click}>Find Recipes</button>
             </Search>
         </TopBar>
     )

@@ -13,20 +13,32 @@ const REACT_APP_API_ID = process.env.REACT_APP_API_ID
 const REACT_APP_API_KEY = process.env.REACT_APP_API_KEY
 
 function App() {
-  // const [search, setSearch] = useState("");
+  const [newSearch, setNewSearch] = useState("bacon");
+  const [search, setSearch] = useState("");
   const [ recipes, setRecipes]= useState([]);
 
   useEffect( ()=>{
     async function fetchRecipes(){
-      const res = await axios.get(`https://api.edamam.com/search?q=bacon&app_id=${REACT_APP_API_ID}&app_key=${REACT_APP_API_KEY}`)
+      const res = await axios.get(`https://api.edamam.com/search?q=${newSearch}&app_id=${REACT_APP_API_ID}&app_key=${REACT_APP_API_KEY}`)
       setRecipes(res.data.hits)
     }
     fetchRecipes()
-  },[])
+  },[newSearch])
+
+  const ClickEvent = ()=>{
+    setNewSearch(search);
+    console.log("new search",newSearch)
+    setSearch("")
+  }
+
+  const InputEvent = (e)=>{
+    setSearch(e.target.value)
+    
+  }
   
   return (
     <Container>
-      <Header />
+      <Header Searching={search} inputEvent={InputEvent} click={ClickEvent}  />
       <Recipe Recipes={recipes} />
     </Container>
   );
