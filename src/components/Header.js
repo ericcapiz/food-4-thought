@@ -8,9 +8,20 @@ const TopBar = styled.div `
     padding: 20px;
     font-size: 25px;
     font-weight: bold;
-    box-shadow:  0 3px 6px 0 teal;
     font-family: 'Architects Daughter','cursive';
     color:steelblue;
+    @media(max-width:800px){
+        flex-direction: column;
+        align-items: center;
+        span{
+            margin: 15px 0
+        }
+    }
+    @media(max-width:385px){
+        span{
+            font-size: 17px;
+        }
+    }
 `
 const Search = styled.div `
     display: flex;
@@ -18,6 +29,7 @@ const Search = styled.div `
     padding: 3px;
     border: 1px solid steelblue;
     border-radius: 10px;
+   
 `
 
 const Input = styled.input `
@@ -34,9 +46,10 @@ const Header = () => {
     return (
         <TopBar>
             Food 4 Thought
+            <span>Search Ingredients 4 Recipes</span>
             <Search>
                 <img src="/search.svg" alt="search-icon" />
-                <Input type="text" placeholder="search by ingredients..." />
+                <Input type="text" placeholder="YUMMMMMM..." />
             </Search>
         </TopBar>
     )
