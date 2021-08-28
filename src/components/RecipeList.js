@@ -1,3 +1,5 @@
+import {useState} from 'react'
+
 import styled from 'styled-components';
 
 const Recipe = styled.div `
@@ -55,16 +57,32 @@ const Complete = styled(RecipeIngredients)`
   
 
 const RecipeList = ({Recipes}) => {
-    console.log("rescipe list",Recipes)
+    console.log("recipe list",Recipes)
+    const [open, setOpen] = useState(false);
+
+    
+
     return (
         <>
             {Recipes.map((recipe)=>(
-                <Recipe key={recipe.recipe.label}>
-                    <Cover src={recipe.recipe.image} alt="meal" />
-                    <RecipeName>{recipe.recipe.label}</RecipeName>
-                    <RecipeIngredients>View Ingredients</RecipeIngredients>
-                    <Complete>View Recipe</Complete>
-                </Recipe>
+                <div  className="diag0"  key={recipe.recipe.url}>
+                    
+                     <Recipe>
+                        <Cover src={recipe.recipe.image} alt="meal" />
+                        <RecipeName>{recipe.recipe.label}</RecipeName>
+                        <RecipeIngredients onClick={()=>setOpen(!open)}>View Ingredients</RecipeIngredients>
+                        <Complete onClick={()=>window.open(recipe.recipe.url)}>View Recipe</Complete>
+                        {open && (
+                            <div >
+                            {recipe.recipe.ingredientLines.map((ingredient)=>(
+                                            
+                                            <p style={{color:"black"}}>{ingredient}</p>
+                                        
+                                    ))}
+                            </div>
+                        )}
+                    </Recipe>
+                </div>
             ))}
             </>
     )

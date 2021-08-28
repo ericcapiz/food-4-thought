@@ -32,6 +32,7 @@ function App() {
   }
 
   const InputEvent = (e)=>{
+    e.preventDefault()
     setSearch(e.target.value)
     
   }

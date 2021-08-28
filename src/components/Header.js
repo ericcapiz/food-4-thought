@@ -1,3 +1,4 @@
+import {Link} from 'react-router-dom'
 import styled from 'styled-components';
 
 
@@ -10,6 +11,7 @@ const TopBar = styled.div `
     font-weight: bold;
     font-family: 'Architects Daughter','cursive';
     color:steelblue;
+
     @media(max-width:800px){
         flex-direction: column;
         align-items: center;
@@ -53,7 +55,7 @@ const Header = ({Searching,inputEvent,click}) => {
     
     return (
         <TopBar>
-            Food 4 Thought
+            <Link style={{textDecoration:"none", color:"inherit"}} to="/">Food 4 Thought</Link>
             <span>Search Ingredients 4 Recipes</span>
             <Search>
                 <img style={{cursor:'pointer'}} onClick={click} src="/search.svg" alt="search-icon" />
