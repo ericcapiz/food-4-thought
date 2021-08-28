@@ -11,7 +11,9 @@ const Recipe = styled.div `
 `
 
 const Cover = styled.img `
-    height: 200px;
+    height: 250px;
+    width:250px;
+    border-radius: 10px;
 `
 
 const RecipeName = styled.span `
@@ -52,14 +54,19 @@ const Complete = styled(RecipeIngredients)`
 `
   
 
-const RecipeList = () => {
+const RecipeList = ({Recipes}) => {
+    console.log("rescipe list",Recipes)
     return (
-        <Recipe>
-            <Cover src="https://www.chicagotribune.com/resizer/3mRtonqQPZwUzM6SyZRBK0ymVms=/1200x0/top/cloudfront-us-east-1.images.arcpublishing.com/tronc/OSOSQT246JDHHPVAOGMCH6AAXU.jpg" alt="meal" />
-            <RecipeName>Name</RecipeName>
-            <RecipeIngredients>View Ingredients</RecipeIngredients>
-            <Complete>View Recipe</Complete>
-        </Recipe>
+        <>
+            {Recipes.map((recipe)=>(
+                <Recipe key={recipe.recipe.label}>
+                    <Cover src={recipe.recipe.image} alt="meal" />
+                    <RecipeName>{recipe.recipe.label}</RecipeName>
+                    <RecipeIngredients>View Ingredients</RecipeIngredients>
+                    <Complete>View Recipe</Complete>
+                </Recipe>
+            ))}
+            </>
     )
 }
 

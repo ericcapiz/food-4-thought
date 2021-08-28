@@ -10,39 +10,12 @@ const RecipeContainer = styled.div `
     background-color: #f0f6ff;
 `
 
-const Recipe = () => {
+const Recipe = ({Recipes}) => {
+    // console.log("recipe comp",recipe)
     return (
         <RecipeContainer>
-            <RecipeList />
-            <RecipeList />
-            <RecipeList />
-            <RecipeList />
-            <RecipeList />
-            <RecipeList />
-            <RecipeList />
-            <RecipeList />
-            <RecipeList />
-            <RecipeList />
-            <RecipeList />
-            <RecipeList />
-            <RecipeList />
-            <RecipeList />
-            <RecipeList />
-            <RecipeList />
-            <RecipeList />
-            <RecipeList />
-            <RecipeList />
-            <RecipeList />
-            <RecipeList />
-            <RecipeList />
-            <RecipeList />
-            <RecipeList />
-            <RecipeList />
-            <RecipeList />
-            <RecipeList />
-            <RecipeList />
-            <RecipeList />
-            <RecipeList />
+            <RecipeList Recipes={Recipes} />
+
         </RecipeContainer>
     )
 }
